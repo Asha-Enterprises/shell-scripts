@@ -13,7 +13,7 @@ END
 
 apt update
 apt full-upgrade -y
-apt install curl wget vim apt-transport-https ca-certificates gnupg haveged
+apt install curl wget vim apt-transport-https ca-certificates gnupg haveged -y
 curl -fsSL https://get.docker.com -o get-docker.sh
 sh ./get-docker.sh
 mkdir ./unifi-controller
@@ -62,6 +62,6 @@ END
 echo "deb [signed-by=/usr/share/keyrings/azlux-archive-keyring.gpg] http://packages.azlux.fr/debian/ bullseye main" | tee /etc/apt/sources.list.d/azlux.list
 wget -O /usr/share/keyrings/azlux-archive-keyring.gpg  https://azlux.fr/repo.gpg
 apt update
-apt install log2ram
+apt install log2ram -y
 
 echo "Jobs done"
