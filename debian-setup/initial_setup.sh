@@ -17,6 +17,7 @@ apt install curl wget vim apt-transport-https ca-certificates gnupg haveged -y
 curl -fsSL https://get.docker.com -o get-docker.sh
 sh ./get-docker.sh
 mkdir ./unifi-controller
+chown cc:cc ./unifi-controller
 cd ./unifi-controller
 
 cat > ./docker-compose.yml << END
@@ -47,7 +48,7 @@ services:
       - run:/var/run/unifi
       - ./backup:/unifi/data/backup
     environment:
-      TZ:America/Los_Angeles
+      TZ: America/Los_Angeles
     restart: unless-stopped
     
 volumes:
@@ -58,6 +59,8 @@ volumes:
   dir:
   run:
 END
+
+chown cc:cc ./docker-compose.yml
 
 echo "deb [signed-by=/usr/share/keyrings/azlux-archive-keyring.gpg] http://packages.azlux.fr/debian/ bullseye main" | tee /etc/apt/sources.list.d/azlux.list
 wget -O /usr/share/keyrings/azlux-archive-keyring.gpg  https://azlux.fr/repo.gpg
