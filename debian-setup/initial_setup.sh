@@ -67,4 +67,6 @@ wget -O /usr/share/keyrings/azlux-archive-keyring.gpg  https://azlux.fr/repo.gpg
 apt update
 apt install log2ram -y
 
+apt autoremove -y
+
 echo "Jobs done"
